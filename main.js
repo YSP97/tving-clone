@@ -30,6 +30,9 @@ gsap.from(
 
 localStorage.setItem('auth', JSON.stringify(defaultAuthData));
 
+console.log(import.meta.env.VITE_PB_API);
+console.log(import.meta.env.VITE_PB_URL);
+
 const { isAuth } = JSON.parse(localStorage.getItem('auth'));
 
 // 랜딩 버튼 페이지 이동 함수 -------------------------------
