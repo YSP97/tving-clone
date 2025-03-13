@@ -75,9 +75,6 @@ const swiper1 = new Swiper('.article--swiper1', {
 /* Quick VOD 스와이퍼 */
 const swiper2 = new Swiper('.article--swiper2', {
   loop: true,
-  // autoplay: {
-  //   delay: 5000,
-  // },
   keyboard: {
     enabled: true,
     onlyInViewport: true,

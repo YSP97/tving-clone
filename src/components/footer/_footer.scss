@@ -17,7 +17,7 @@ body {
 footer {
   margin-top: 8.75rem;
   margin-bottom: 10.52rem;
-  margin-left: 4.25rem;
+  margin-left: clamp(2rem, 4vw, 4.38rem);
   margin-right: 4.25rem;
   @include display(column, null, flex-start, null);
   align-self: stretch;

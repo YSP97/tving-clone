@@ -1,4 +1,4 @@
-import { insertLast, getNode } from 'kind-tiger';
+import { insertLast } from 'kind-tiger';
 import './modules/index.js';
 import '/src/pages/main/_main.scss';
 import pb from '/src/api/pocketbase.js';
@@ -10,6 +10,11 @@ import { animation } from './modules/animation.js';
 async function renderCard5() {
   const data = await pb.collection('main_only_taing').getFullList();
 
+  const firstFilename = data[0].img;
+
+  const url = pb.files.getURL(data, firstFilename);
+
+  console.log(url);
   for (let i = 0; i < data.length; i++) {
     const dataObj = data[i];
 

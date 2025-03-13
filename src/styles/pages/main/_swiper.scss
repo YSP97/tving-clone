@@ -17,11 +17,11 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  color: rgb(0, 0, 0);
+  color: rgb(57, 57, 57);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: gray;
+  background-color: rgb(169, 169, 169);
   opacity: 50%;
   position: absolute;
   z-index: 400;
@@ -32,6 +32,11 @@
 .swiper-button-next,
 .swiper-button-prev {
   color: #898989;
+  width: 20px;
+  font-size: 20px;
+  --swiper-navigation-size: 44px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .article--swiper2 {
@@ -76,6 +81,11 @@
       }
     }
   }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    --swiper-navigation-size: 30px;
+  }
 }
 
 @media (max-width: $breakpoint-tablet) {
@@ -88,6 +98,18 @@
         height: 100%;
       }
     }
+  }
+
+  .slide-btn {
+    width: 24px;
+    height: 24px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    --swiper-navigation-size: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 }
 

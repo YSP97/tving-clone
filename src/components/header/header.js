@@ -152,16 +152,20 @@ async function fetchData() {
       const cancelButton = userOutModal.querySelector('.cancel-userout');
       const confirmButton = userOutModal.querySelector('.confirm-userout');
 
-      profileIcon.addEventListener('mouseenter', () => {
+      // 프로필 아이콘 클릭 시 프로필 모달 표시
+      profileIcon.addEventListener('click', (event) => {
+        event.stopPropagation(); // 이벤트 전파 방지
         profileModal.classList.add('is-active');
       });
 
-      profileIcon.addEventListener('mouseleave', () => {
-        setTimeout(() => {
-          if (!profileModal.matches(':hover')) {
-            profileModal.classList.remove('is-active');
-          }
-        }, 300);
+      // 외부 클릭 시 모달 닫기
+      document.addEventListener('click', (event) => {
+        if (
+          !profileModal.contains(event.target) &&
+          !profileIcon.contains(event.target)
+        ) {
+          profileModal.classList.remove('is-active');
+        }
       });
 
       logoutButton.addEventListener('click', (e) => {
@@ -178,12 +182,15 @@ async function fetchData() {
         setStorage('auth', defaultAuth);
         window.location.href = '/src/pages/login/index.html';
       });
+
       userOut.addEventListener('click', () => {
         userOutModal.style.display = 'block';
       });
+
       cancelButton.addEventListener('click', () => {
         userOutModal.style.display = 'none';
       });
+
       confirmButton.addEventListener('click', async () => {
         try {
           let user = await getStorage('auth');
@@ -193,11 +200,8 @@ async function fetchData() {
           await pb.collection('users').delete(userId);
           console.log('User deleted successfully');
           setStorage('auth', defaultAuth);
-
-          // 추가적인 작업 (예: 로그아웃, 페이지 리다이렉트 등)
         } catch (error) {
           console.error('Error deleting user:', error);
-          // 사용자에게 오류 메시지 표시
         }
         window.location.href = '/src/pages/login/index.html';
         userOutModal.style.display = 'none';
